@@ -38,13 +38,15 @@ if uploaded_file:
                 prompt = (
                      '''ROLE: Professional Real Estate Interior Color Correction Engine
 
-OBJECTIVE:
+OBJECTIVE
 
 Analyze the uploaded interior real estate image and perform MLS-quality professional color correction using object-aware segmentation, localized white balance correction, surface-based color normalization, and material-preserving adjustments.
 
+The objective is to remove lighting-induced color contamination while preserving the original image quality, resolution, sharpness, texture, detail, and photographic realism.
+
 SURFACE SEGMENTATION
 
-Detect and generate independent masks for:
+Detect and generate accurate masks for:
 
 * Walls
 * Ceilings
@@ -57,9 +59,10 @@ Detect and generate independent masks for:
 * Light fixtures
 * Windows
 * Decorative objects
+* Artwork
 * Architectural details
 
-Analyze and process each surface independently before applying color correction.
+Analyze and process each surface independently before applying corrections.
 
 WALL COLOR NORMALIZATION
 
@@ -73,11 +76,14 @@ Separate actual paint color from lighting contamination caused by:
 * Recessed lights
 * Lamp spill
 * Window reflections
+* Skylights
+* Daylight spill
 * Sky reflections
 * Mixed lighting conditions
+* Reflected color from furniture and flooring
 * Color bounce from nearby surfaces
 
-Remove unwanted lighting-induced color contamination including:
+Remove unwanted color contamination including:
 
 * Yellow casts
 * Orange casts
@@ -88,9 +94,9 @@ Remove unwanted lighting-induced color contamination including:
 * Magenta casts
 * Mixed-light contamination
 
-Correct both warm and cool color contamination while preserving the true paint color.
+Correct both warm and cool color contamination while preserving the true wall paint color.
 
-Maintain wall color consistency throughout the room:
+Ensure wall color consistency throughout the room:
 
 * No yellow corners
 * No orange hotspots
@@ -101,7 +107,8 @@ Maintain wall color consistency throughout the room:
 * No cool hotspots near windows
 * No wall-to-wall color shifts
 * No uneven wall tones
-* No lighting-induced discoloration
+* No localized discoloration
+* No lighting-induced color variation
 
 Walls should appear clean, uniform, natural, and professionally painted while retaining their original color.
 
@@ -136,9 +143,9 @@ Maintain:
 
 Ceilings must appear consistently neutral white throughout the image.
 
-TRIM, MOLDINGS, AND DOORS
+TRIM, MOLDINGS, DOORS, AND FRAMES
 
-Detect white trim, moldings, baseboards, doors, and door frames.
+Detect all trim, moldings, baseboards, doors, and frames.
 
 Remove all lighting-induced color contamination.
 
@@ -159,35 +166,85 @@ Restore a clean neutral-white appearance while preserving:
 * Gloss and reflections
 * Natural shadow detail
 
-MATERIAL PRESERVATION
+CABINETS AND COUNTERTOPS
 
-Preserve the authentic color characteristics of:
+Detect cabinetry and countertop surfaces independently.
 
-* Hardwood flooring
-* Wood cabinetry
+Correct only lighting contamination.
+
+Preserve:
+
+* Wood cabinet tones
+* Painted cabinet colors
+* Quartz colors
+* Marble colors
+* Granite colors
+* Stone textures
+* Material realism
+
+Do not alter original material colors.
+
+FLOORING CORRECTION
+
+Detect flooring separately.
+
+Preserve:
+
+* Hardwood tones
+* Natural wood warmth
+* Tile colors
+* Stone flooring colors
+* Carpet colors
+
+Remove only unwanted lighting contamination.
+
+Do not neutralize naturally warm flooring materials.
+
+FURNITURE, ARTWORK, AND DECOR PRESERVATION
+
+Preserve authentic color characteristics of:
+
 * Furniture
-* Stone countertops
-* Quartz surfaces
-* Marble surfaces
 * Artwork
-* Decorative accents
-* Fabrics
+* Decorative objects
 * Rugs
-* Natural wood finishes
+* Fabrics
+* Pillows
+* Curtains
+* Accent pieces
+* Wood finishes
 
-Do not neutralize materials that are naturally warm or cool in color.
+Remove only artificial lighting contamination.
 
-Only remove unwanted lighting contamination.
+Maintain original material appearance and color identity.
 
-Preserve the original appearance and material identity of every object.
+WINDOW AND DAYLIGHT CONTROL
+
+Detect windows, skylights, and daylight sources.
+
+Remove blue and cyan contamination caused by:
+
+* Daylight spill
+* Skylight reflections
+* Window reflections
+* Exterior sky reflections
+
+Prevent daylight contamination from affecting:
+
+* Walls
+* Ceilings
+* Trim
+* Doors
+* Cabinets
+* Furniture
 
 LIGHT FIXTURE HANDLING
 
-Detect all visible bulbs, lamps, chandeliers, sconces, pendants, and light fixtures.
+Detect all visible bulbs, lamps, chandeliers, sconces, pendants, recessed lights, and fixtures.
 
-Allow light sources to retain a realistic warm glow.
+Allow bulbs and light sources to retain a realistic warm glow.
 
-However, prevent warm or cool color contamination from affecting:
+Prevent warm or cool light spill from contaminating:
 
 * Walls
 * Ceilings
@@ -211,19 +268,19 @@ Independently correct:
 * Trim
 * Doors
 * Cabinets
-* Furniture
-* Floors
 * Countertops
+* Furniture
+* Flooring
 
-Avoid global white balance adjustments that uniformly affect the entire image.
+Avoid global white balance adjustments.
 
-Use surface-specific correction to achieve accurate colors while maintaining a natural appearance.
+Use surface-specific correction to achieve accurate colors while maintaining realism.
 
 EXPOSURE AND TONAL BALANCING
 
 Maintain natural brightness and contrast.
 
-Improve overall image clarity while preserving:
+Preserve:
 
 * Highlight detail
 * Shadow detail
@@ -234,10 +291,85 @@ Improve overall image clarity while preserving:
 Avoid:
 
 * Overexposure
-* Flat appearance
-* Artificial HDR effects
 * Excessive contrast
+* Artificial HDR
+* Unrealistic brightness
 * Over-processing
+
+IMAGE QUALITY PRESERVATION
+
+Maintain the exact original photographic appearance.
+
+DO NOT:
+
+* Increase clarity
+* Increase sharpness
+* Increase texture
+* Increase micro-contrast
+* Increase local contrast
+* Apply HDR processing
+* Apply AI detail enhancement
+* Apply edge enhancement
+* Apply oversharpening
+* Apply structure enhancement
+* Apply artificial texture enhancement
+* Apply aggressive denoising
+* Create artificial detail
+
+Preserve exactly:
+
+* Original sharpness
+* Original clarity
+* Original texture
+* Original noise/grain structure
+* Original lens characteristics
+* Original detail rendering
+* Original depth perception
+* Original photographic realism
+
+Color correction must only modify:
+
+* White balance
+* Color balance
+* Lighting contamination
+* Surface color casts
+
+No other visual enhancement should be applied.
+
+RESOLUTION AND FILE QUALITY PRESERVATION
+
+CRITICAL REQUIREMENT:
+
+Maintain the exact original image dimensions and quality.
+
+DO NOT:
+
+* Resize the image
+* Downscale the image
+* Upscale the image
+* Change aspect ratio
+* Crop the image
+* Compress the image
+* Reduce image quality
+* Re-encode using lower quality settings
+* Generate a lower-resolution output
+
+Preserve exactly:
+
+* Original width
+* Original height
+* Original aspect ratio
+* Original pixel count
+* Original resolution
+* Original image quality
+
+The final output resolution must be identical to the uploaded image.
+
+Example:
+
+If input resolution is 3504×2336, output resolution must remain 3504×2336.
+
+Perform all color corrections at full resolution.
 
 QUALITY CONTROL
 
@@ -254,14 +386,24 @@ Verify that:
 * No cyan casts remain
 * No green casts remain
 * No magenta casts remain
-* No warm halos remain around fixtures
-* No cool halos remain around windows
+* No warm halos remain
+* No cool halos remain
 * No localized color contamination remains
 * No surface appears over-neutralized
 * Original material colors are preserved
 * Architectural details remain intact
-* Lighting remains realistic and natural
-* The image appears professionally color-corrected
+* Lighting remains realistic
+* Image sharpness matches the original
+* Image clarity matches the original
+* Texture intensity matches the original
+* No additional detail has been created
+* No HDR appearance is present
+* No artificial enhancement is visible
+* Output resolution equals input resolution
+* Output dimensions equal input dimensions
+* No resampling has occurred
+* No compression artifacts have been introduced
+* Color correction is the only visible modification
 
 OUTPUT REQUIREMENTS
 
@@ -276,15 +418,27 @@ Generate a bright, clean, realistic, MLS-quality real estate photograph with:
 * Natural contrast
 * Realistic lighting
 * Consistent color throughout the room
-* No visible warm color contamination
-* No visible cool color contamination
+* No warm color contamination
+* No cool color contamination
 * No yellow, orange, amber, blue, cyan, green, or magenta casts
 * No lighting-induced discoloration
-* No artificial or over-processed appearance
+* No increased sharpness
+* No increased clarity
+* No HDR effect
+* No artificial enhancement
+* No resolution loss
+* No compression loss
+* No change in image dimensions
 
 FINAL GOAL
 
-Produce a professional real estate image where walls display their true paint color, ceilings and trim appear clean neutral white, materials retain their authentic colors, and all warm or cool lighting contamination has been removed while maintaining a natural, realistic, MLS-ready appearance.
+Produce a professional real estate image where walls display their true paint color, ceilings and trim appear clean neutral white, materials retain their authentic colors, all warm and cool lighting contamination has been removed, and the exact original image quality, resolution, sharpness, texture, detail level, and photographic realism are preserved.
+
+Only color correction should be visible.
+
+The final image must have the same dimensions, same resolution, same detail level, same sharpness, same texture, and same overall image quality as the original image while exhibiting professionally corrected and color-accurate surfaces.
+
+
 
  '''
                 )
@@ -298,15 +452,37 @@ Produce a professional real estate image where walls display their true paint co
                     )
                 )
                 
+                
                 # Display output
                 found = False
                 for part in response.candidates[0].content.parts:
                     if part.inline_data:
                         edited_image = PILImage.open(io.BytesIO(part.inline_data.data))
+                        
+                        # Display the image
                         st.image(edited_image, caption='Corrected Image', use_container_width=True)
+                        
+                        # --- ADD DOWNLOAD BUTTON HERE ---
+                        # Prepare the image for download
+                        buf = io.BytesIO()
+                        # Use PNG or JPEG. PNG is lossless and preserves quality perfectly.
+                        edited_image.save(buf, format="PNG") 
+                        byte_im = buf.getvalue()
+                        
+                        st.download_button(
+                            label="Download Corrected Image",
+                            data=byte_im,
+                            file_name="corrected_real_estate.png",
+                            mime="image/png"
+                        )
+                        # --------------------------------
+                        
                         st.success("Correction applied!")
                         found = True
                         break
+                
+                if not found:
+                    st.warning("Model response received, but no image found.")
                 
                 if not found:
                     st.warning("Model response received, but no image found.")
