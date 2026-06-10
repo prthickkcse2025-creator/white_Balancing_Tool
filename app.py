@@ -39,9 +39,10 @@ if uploaded_file:
                      '''ROLE: Professional Real Estate Interior Color Correction Engine
 
 OBJECTIVE:
+
 Analyze the uploaded interior real estate image and perform MLS-quality professional color correction using object-aware segmentation, localized white balance correction, surface-based color normalization, and material-preserving adjustments.
 
-SURFACE SEGMENTATION:
+SURFACE SEGMENTATION
 
 Detect and generate independent masks for:
 
@@ -58,46 +59,53 @@ Detect and generate independent masks for:
 * Decorative objects
 * Architectural details
 
-Process each surface independently.
+Analyze and process each surface independently before applying color correction.
 
-WALL COLOR NORMALIZATION:
+WALL COLOR NORMALIZATION
 
 Determine the true underlying paint color of every wall.
 
-Separate paint color from lighting contamination caused by:
+Separate actual paint color from lighting contamination caused by:
 
 * Tungsten lighting
-* Warm LEDs
+* Warm LED lighting
 * Chandeliers
 * Recessed lights
 * Lamp spill
 * Window reflections
+* Sky reflections
 * Mixed lighting conditions
-* Color bounce from surrounding materials
+* Color bounce from nearby surfaces
 
-Remove unwanted:
+Remove unwanted lighting-induced color contamination including:
 
 * Yellow casts
 * Orange casts
 * Amber casts
+* Blue casts
+* Cyan casts
 * Green casts
 * Magenta casts
 * Mixed-light contamination
 
-Preserve the original wall paint color.
+Correct both warm and cool color contamination while preserving the true paint color.
 
-Ensure wall color consistency across all wall surfaces:
+Maintain wall color consistency throughout the room:
 
 * No yellow corners
 * No orange hotspots
-* No warm patches
-* No uneven wall tones
+* No amber discoloration
+* No blue patches
+* No cyan contamination
+* No warm hotspots near fixtures
+* No cool hotspots near windows
 * No wall-to-wall color shifts
+* No uneven wall tones
 * No lighting-induced discoloration
 
-Walls should appear clean, uniform, and naturally painted while retaining original color.
+Walls should appear clean, uniform, natural, and professionally painted while retaining their original color.
 
-CEILING CORRECTION:
+CEILING CORRECTION
 
 Detect all ceiling surfaces separately from walls.
 
@@ -107,37 +115,53 @@ For white or off-white ceilings:
 * Remove yellow contamination
 * Remove orange contamination
 * Remove amber contamination
+* Remove blue contamination
+* Remove cyan contamination
 * Remove green contamination
 * Remove magenta contamination
 * Remove color bleeding from fixtures
+* Remove daylight contamination
+* Remove sky-color contamination
 * Remove lamp spill
-* Eliminate warm halos around light sources
+* Eliminate warm halos around fixtures
+* Eliminate cool halos around windows and skylights
 
 Maintain:
 
 * Ceiling texture
-* Shadows
-* Architectural detail
+* Surface detail
+* Architectural features
 * Crown molding definition
+* Natural shadows
 
-Ceilings must appear consistently neutral and naturally white.
+Ceilings must appear consistently neutral white throughout the image.
 
-TRIM, DOORS, AND MOLDINGS:
+TRIM, MOLDINGS, AND DOORS
 
-Detect white trim, moldings, and doors.
+Detect white trim, moldings, baseboards, doors, and door frames.
 
 Remove all lighting-induced color contamination.
 
-Restore neutral white appearance while preserving:
+Eliminate:
+
+* Yellow casts
+* Orange casts
+* Amber casts
+* Blue casts
+* Cyan casts
+* Green casts
+* Magenta casts
+
+Restore a clean neutral-white appearance while preserving:
 
 * Surface texture
-* Gloss
-* Material detail
-* Shadow definition
+* Material characteristics
+* Gloss and reflections
+* Natural shadow detail
 
-MATERIAL PRESERVATION:
+MATERIAL PRESERVATION
 
-Preserve the natural color characteristics of:
+Preserve the authentic color characteristics of:
 
 * Hardwood flooring
 * Wood cabinetry
@@ -149,18 +173,21 @@ Preserve the natural color characteristics of:
 * Decorative accents
 * Fabrics
 * Rugs
+* Natural wood finishes
 
-Do not neutralize naturally warm materials.
+Do not neutralize materials that are naturally warm or cool in color.
 
-Only remove artificial lighting contamination.
+Only remove unwanted lighting contamination.
 
-LIGHT FIXTURE HANDLING:
+Preserve the original appearance and material identity of every object.
 
-Detect visible light fixtures and bulbs.
+LIGHT FIXTURE HANDLING
 
-Allow bulbs and light sources to retain realistic warm illumination.
+Detect all visible bulbs, lamps, chandeliers, sconces, pendants, and light fixtures.
 
-Prevent warm color spill from affecting:
+Allow light sources to retain a realistic warm glow.
+
+However, prevent warm or cool color contamination from affecting:
 
 * Walls
 * Ceilings
@@ -169,12 +196,13 @@ Prevent warm color spill from affecting:
 * Cabinets
 * Furniture
 * Flooring
+* Countertops
 
-Light sources may remain warm, but surrounding surfaces must retain true material color.
+Light sources may remain warm and realistic, but surrounding surfaces must retain their true material color.
 
-LOCALIZED WHITE BALANCE:
+LOCALIZED WHITE BALANCE CORRECTION
 
-Apply object-based localized white balance correction.
+Apply object-aware localized white balance correction.
 
 Independently correct:
 
@@ -185,42 +213,79 @@ Independently correct:
 * Cabinets
 * Furniture
 * Floors
+* Countertops
 
-Avoid global white balance adjustments that affect the entire image uniformly.
+Avoid global white balance adjustments that uniformly affect the entire image.
 
-QUALITY CONTROL:
+Use surface-specific correction to achieve accurate colors while maintaining a natural appearance.
+
+EXPOSURE AND TONAL BALANCING
+
+Maintain natural brightness and contrast.
+
+Improve overall image clarity while preserving:
+
+* Highlight detail
+* Shadow detail
+* Window detail
+* Architectural detail
+* Material texture
+
+Avoid:
+
+* Overexposure
+* Flat appearance
+* Artificial HDR effects
+* Excessive contrast
+* Over-processing
+
+QUALITY CONTROL
 
 Verify that:
 
 * White ceilings appear neutral white
 * White trim appears neutral white
 * White doors appear neutral white
-* Wall color is uniform throughout the room
-* No yellow halos remain
-* No orange halos remain
-* No green contamination remains
-* No magenta contamination remains
-* No localized color casts remain
-* No over-neutralization occurs
-* Material colors remain authentic
+* Wall color is consistent throughout the room
+* No yellow casts remain
+* No orange casts remain
+* No amber casts remain
+* No blue casts remain
+* No cyan casts remain
+* No green casts remain
+* No magenta casts remain
+* No warm halos remain around fixtures
+* No cool halos remain around windows
+* No localized color contamination remains
+* No surface appears over-neutralized
+* Original material colors are preserved
 * Architectural details remain intact
-* Lighting remains realistic
-* Image remains natural and believable
+* Lighting remains realistic and natural
+* The image appears professionally color-corrected
 
-OUTPUT REQUIREMENTS:
+OUTPUT REQUIREMENTS
 
 Generate a bright, clean, realistic, MLS-quality real estate photograph with:
 
 * Uniform wall color
 * Neutral white ceilings
 * Neutral white trim
+* Neutral white doors
 * Accurate material colors
+* Balanced white balance
 * Natural contrast
-* Balanced exposure
 * Realistic lighting
-* Professional real estate photography appearance
-* No visible lighting-induced color contamination
+* Consistent color throughout the room
+* No visible warm color contamination
+* No visible cool color contamination
+* No yellow, orange, amber, blue, cyan, green, or magenta casts
+* No lighting-induced discoloration
 * No artificial or over-processed appearance
+
+FINAL GOAL
+
+Produce a professional real estate image where walls display their true paint color, ceilings and trim appear clean neutral white, materials retain their authentic colors, and all warm or cool lighting contamination has been removed while maintaining a natural, realistic, MLS-ready appearance.
+
  '''
                 )
                 
